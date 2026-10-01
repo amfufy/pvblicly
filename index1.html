@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pvblicly — Remote Operations Team</title>
+<meta name="description" content="Pvblicly is your remote operations team: SOPs, admin, reports, customer follow-up, and social media for busy business owners. Plans from $1,000/month.">
+<meta property="og:title" content="Pvblicly — Your business runs on systems, not your phone.">
+<meta property="og:description" content="Remote operations team for busy owners. Book a free Operations Audit.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2305070D'/%3E%3Crect x='9' y='9' width='14' height='14' transform='rotate(45 16 16)' fill='none' stroke='%233BE3FF' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#05070D}
+a{color:#7FEFFF}a:hover{color:#FFFFFF}
+@keyframes gridmove{from{background-position:0 0}to{background-position:0 80px}}
+@keyframes spin{from{transform:rotateX(-24deg) rotateY(0deg)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes scan{0%{top:-10%}100%{top:110%}}
+@keyframes glowpulse{0%,100%{opacity:.55}50%{opacity:1}}
+.floor{position:absolute;left:-40%;right:-40%;bottom:0;height:62%;background-image:linear-gradient(rgba(59,227,255,.38) 1px,transparent 1px),linear-gradient(90deg,rgba(59,227,255,.38) 1px,transparent 1px);background-size:80px 80px;transform:perspective(520px) rotateX(70deg);transform-origin:center bottom;animation:gridmove 2.6s linear infinite;-webkit-mask-image:linear-gradient(to top,#000 35%,transparent 100%);mask-image:linear-gradient(to top,#000 35%,transparent 100%);pointer-events:none}
+.cube-wrap{perspective:900px;animation:floaty 6s ease-in-out infinite}
+.cube{width:130px;height:130px;position:relative;transform-style:preserve-3d;animation:spin 16s linear infinite}
+.face{position:absolute;inset:0;border:1px solid rgba(59,227,255,.75);background:rgba(59,227,255,.07);box-shadow:inset 0 0 30px rgba(59,227,255,.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;color:#CFF8FF;letter-spacing:.08em}
+.f1{transform:translateZ(65px)}.f2{transform:rotateY(180deg) translateZ(65px)}.f3{transform:rotateY(90deg) translateZ(65px)}.f4{transform:rotateY(-90deg) translateZ(65px)}.f5{transform:rotateX(90deg) translateZ(65px)}.f6{transform:rotateX(-90deg) translateZ(65px)}
+.tilt{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;transform:perspective(900px) rotateX(0deg) rotateY(0deg)}
+.tilt:hover{transform:perspective(900px) rotateX(7deg) rotateY(-7deg) translateZ(24px);box-shadow:0 30px 60px -24px rgba(59,227,255,.45);border-color:rgba(59,227,255,.6) !important}
+.plans{perspective:1600px}
+.plan-l{transform:rotateY(14deg) translateZ(-30px);transform-origin:right center}
+.plan-r{transform:rotateY(-14deg) translateZ(-30px);transform-origin:left center}
+.plan-m{transform:translateZ(40px) scale(1.03)}
+.plan-l,.plan-r,.plan-m{transition:transform .4s ease}
+.plan-l:hover,.plan-r:hover{transform:rotateY(0deg) translateZ(20px)}
+.stack{perspective:1000px;height:380px;position:relative}
+.plate{position:absolute;left:50%;width:260px;height:160px;margin-left:-130px;transform:rotateX(60deg) rotateZ(-40deg);border:1px solid rgba(59,227,255,.7);background:rgba(59,227,255,.06);box-shadow:0 0 40px rgba(59,227,255,.18),inset 0 0 40px rgba(139,92,246,.18);display:flex;align-items:flex-end;justify-content:flex-start;padding:14px;box-sizing:border-box;font-family:'JetBrains Mono',monospace;font-size:14px;color:#CFF8FF;animation:glowpulse 4s ease-in-out infinite}
+.scanline{position:absolute;left:0;right:0;height:60px;background:linear-gradient(to bottom,transparent,rgba(59,227,255,.12),transparent);animation:scan 5s linear infinite;pointer-events:none}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ticks li{position:relative;padding-left:24px;font-size:15px;line-height:1.45;color:#C3CCDA}
+.ticks li::before{content:"";position:absolute;left:0;top:6px;width:10px;height:10px;border:1.5px solid #3BE3FF;transform:rotate(45deg);box-shadow:0 0 8px rgba(59,227,255,.7)}
+details{border-top:1px solid rgba(255,255,255,.12);padding:18px 0}
+details summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#FFFFFF;list-style:none;min-height:44px;display:flex;align-items:center}
+details summary::-webkit-details-marker{display:none}
+details p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#AEB9C9;max-width:760px}
+@media (max-width:900px){.plan-l,.plan-r,.plan-m{transform:none !important}.hide-sm{display:none !important}.navlinks{display:none !important}}
+@media (prefers-reduced-motion:reduce){.floor,.cube,.cube-wrap,.plate,.scanline{animation:none !important}}
+
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes rot{to{--a:360deg}}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,-40px) scale(1.15)}100%{transform:translate(-60px,50px) scale(.95)}}
+@keyframes twinkle{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-1000px)}}
+@keyframes shimmer{to{background-position:200% center}}
+@keyframes sweep{0%{transform:translateX(-120%) skewX(-20deg)}60%,100%{transform:translateX(220%) skewX(-20deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes orbit{from{transform:rotateX(72deg) rotateZ(0deg)}to{transform:rotateX(72deg) rotateZ(360deg)}}
+@keyframes orbit2{from{transform:rotateY(70deg) rotateZ(0deg)}to{transform:rotateY(70deg) rotateZ(-360deg)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes tunnel{0%{transform:translateZ(-1400px);opacity:0}15%{opacity:1}100%{transform:translateZ(500px);opacity:0}}
+@keyframes beam{0%{left:-30%}100%{left:100%}}
+@keyframes reveal{from{opacity:0;transform:translateY(70px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 rgba(59,227,255,.55)}100%{box-shadow:0 0 0 18px rgba(59,227,255,0)}}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:drift 16s ease-in-out infinite alternate}
+.stars{position:absolute;left:0;top:0;width:2px;height:2px;border-radius:50%;background:transparent;pointer-events:none}
+.stars-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.s1{box-shadow:663px 970px rgba(255,255,255,0.39),1333px 49px rgba(255,255,255,0.34),1097px 96px rgba(255,255,255,0.52),118px 931px rgba(255,255,255,0.6),76px 88px rgba(255,255,255,0.56),143px 246px rgba(255,255,255,0.35),869px 60px rgba(255,255,255,0.8),253px 970px rgba(255,255,255,0.43),1284px 596px rgba(255,255,255,0.87),1181px 599px rgba(255,255,255,0.54),452px 47px rgba(255,255,255,0.63),272px 296px rgba(255,255,255,0.55),1107px 120px rgba(255,255,255,0.64),1147px 835px rgba(255,255,255,0.71),211px 595px rgba(255,255,255,0.64),384px 381px rgba(255,255,255,0.36),1458px 64px rgba(255,255,255,0.64),1267px 210px rgba(255,255,255,0.6),1088px 437px rgba(255,255,255,0.77),953px 599px rgba(255,255,255,0.85),740px 306px rgba(255,255,255,0.45),368px 715px rgba(255,255,255,0.77),167px 588px rgba(255,255,255,0.48),1013px 896px rgba(255,255,255,0.51),919px 294px rgba(255,255,255,0.67),149px 120px rgba(255,255,255,0.61),337px 775px rgba(255,255,255,0.51),1001px 431px rgba(255,255,255,0.32),1368px 79px rgba(255,255,255,0.76),1173px 808px rgba(255,255,255,0.83),642px 348px rgba(255,255,255,0.72),1217px 508px rgba(255,255,255,0.65),934px 70px rgba(255,255,255,0.8),552px 485px rgba(255,255,255,0.72),133px 62px rgba(255,255,255,0.74),634px 662px rgba(255,255,255,0.65),1395px 841px rgba(255,255,255,0.57),1467px 395px rgba(255,255,255,0.83),710px 23px rgba(255,255,255,0.86),727px 172px rgba(255,255,255,0.67),1011px 60px rgba(255,255,255,0.43),588px 132px rgba(255,255,255,0.74),814px 400px rgba(255,255,255,0.85),1016px 82px rgba(255,255,255,0.4),822px 562px rgba(255,255,255,0.47),280px 838px rgba(255,255,255,0.56),1126px 285px rgba(255,255,255,0.72),734px 699px rgba(255,255,255,0.83),472px 154px rgba(255,255,255,0.35),309px 237px rgba(255,255,255,0.7),24px 496px rgba(255,255,255,0.8),373px 269px rgba(255,255,255,0.47),298px 429px rgba(255,255,255,0.62),1248px 579px rgba(255,255,255,0.49),257px 707px rgba(255,255,255,0.82),1264px 670px rgba(255,255,255,0.71),110px 467px rgba(255,255,255,0.84),1597px 974px rgba(255,255,255,0.82),1145px 401px rgba(255,255,255,0.54),807px 106px rgba(255,255,255,0.59),820px 63px rgba(255,255,255,0.41),427px 451px rgba(255,255,255,0.4),696px 615px rgba(255,255,255,0.33),0px 580px rgba(255,255,255,0.39),207px 971px rgba(255,255,255,0.52),52px 72px rgba(255,255,255,0.82),1257px 385px rgba(255,255,255,0.39),516px 978px rgba(255,255,255,0.51),745px 485px rgba(255,255,255,0.37),999px 477px rgba(255,255,255,0.59),638px 87px rgba(255,255,255,0.39),1535px 350px rgba(255,255,255,0.74),980px 848px rgba(255,255,255,0.72),1057px 23px rgba(255,255,255,0.42),1081px 370px rgba(255,255,255,0.39),1112px 936px rgba(255,255,255,0.32),1081px 305px rgba(255,255,255,0.89),186px 712px rgba(255,255,255,0.81),1061px 375px rgba(255,255,255,0.84),728px 790px rgba(255,255,255,0.43),1109px 797px rgba(255,255,255,0.6),1303px 228px rgba(255,255,255,0.67),1553px 873px rgba(255,255,255,0.42),490px 837px rgba(255,255,255,0.54),464px 204px rgba(255,255,255,0.61),728px 748px rgba(255,255,255,0.32),57px 809px rgba(255,255,255,0.47),530px 198px rgba(255,255,255,0.72),705px 457px rgba(255,255,255,0.79),1480px 357px rgba(255,255,255,0.87);animation:twinkle 3s ease-in-out infinite}
+.s2{width:3px;height:3px;box-shadow:746px 82px rgba(255,255,255,0.43),464px 481px rgba(255,255,255,0.42),418px 494px rgba(255,255,255,0.67),1249px 860px rgba(255,255,255,0.3),1337px 352px rgba(255,255,255,0.78),173px 854px rgba(255,255,255,0.7),795px 801px rgba(255,255,255,0.73),408px 489px rgba(255,255,255,0.83),888px 808px rgba(255,255,255,0.68),177px 820px rgba(255,255,255,0.87),1478px 405px rgba(255,255,255,0.58),1522px 969px rgba(255,255,255,0.35),325px 174px rgba(255,255,255,0.9),56px 154px rgba(255,255,255,0.65),953px 825px rgba(255,255,255,0.69),1252px 846px rgba(255,255,255,0.66),971px 673px rgba(255,255,255,0.86),319px 561px rgba(255,255,255,0.63),43px 14px rgba(255,255,255,0.78),1487px 665px rgba(255,255,255,0.36),1534px 956px rgba(255,255,255,0.38),398px 845px rgba(255,255,255,0.82),57px 257px rgba(255,255,255,0.43),1026px 246px rgba(255,255,255,0.76),667px 265px rgba(255,255,255,0.63),268px 62px rgba(255,255,255,0.85),724px 919px rgba(255,255,255,0.57),1194px 834px rgba(255,255,255,0.84),861px 846px rgba(255,255,255,0.85),1027px 133px rgba(255,255,255,0.62),1072px 522px rgba(255,255,255,0.31),901px 795px rgba(255,255,255,0.41),8px 794px rgba(255,255,255,0.78),352px 144px rgba(255,255,255,0.58),1485px 123px rgba(255,255,255,0.63),667px 698px rgba(255,255,255,0.61),1137px 494px rgba(255,255,255,0.77),217px 904px rgba(255,255,255,0.64),508px 195px rgba(255,255,255,0.47),1581px 100px rgba(255,255,255,0.6),1150px 28px rgba(255,255,255,0.76),129px 453px rgba(255,255,255,0.5),1035px 620px rgba(255,255,255,0.61),1418px 283px rgba(255,255,255,0.57),1092px 826px rgba(255,255,255,0.59);animation:twinkle 4.5s ease-in-out infinite reverse}
+.s3{width:4px;height:4px;box-shadow:507px 715px rgba(255,255,255,0.61),531px 944px rgba(255,255,255,0.64),414px 860px rgba(255,255,255,0.57),853px 124px rgba(255,255,255,0.54),647px 74px rgba(255,255,255,0.7),877px 74px rgba(255,255,255,0.43),620px 802px rgba(255,255,255,0.37),1591px 158px rgba(255,255,255,0.86),1317px 676px rgba(255,255,255,0.52),518px 904px rgba(255,255,255,0.38),957px 224px rgba(255,255,255,0.75),192px 407px rgba(255,255,255,0.83),333px 683px rgba(255,255,255,0.8),330px 723px rgba(255,255,255,0.56),1055px 413px rgba(255,255,255,0.5),400px 365px rgba(255,255,255,0.49),1478px 374px rgba(255,255,255,0.31),1134px 469px rgba(255,255,255,0.56);filter:drop-shadow(0 0 4px #7FEFFF);animation:twinkle 6s ease-in-out infinite}
+.shimmer-text{background-size:200% auto !important;animation:shimmer 7s linear infinite}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:sweep 3.2s ease-in-out infinite;pointer-events:none}
+.tilt{position:relative;overflow:hidden}
+.tilt::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(127,239,255,.16) 45%,rgba(185,163,255,.16) 55%,transparent 70%);transform:translateX(-100%);transition:transform .7s ease;pointer-events:none}
+.tilt:hover::after{transform:translateX(100%)}
+.cursor{display:inline-block;width:8px;height:14px;background:#3BE3FF;margin-left:4px;animation:blink 1s steps(1) infinite}
+.orbit-wrap{position:absolute;inset:-60px;transform-style:preserve-3d;pointer-events:none}
+.orbit{position:absolute;inset:0;border:1px solid rgba(185,163,255,.55);border-radius:50%;transform-style:preserve-3d;animation:orbit 9s linear infinite}
+.orbit.o2{inset:18px;border-color:rgba(59,227,255,.5);animation:orbit2 12s linear infinite}
+.orbit::after{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#B9A3FF;box-shadow:0 0 14px #B9A3FF}
+.orbit.o2::after{background:#3BE3FF;box-shadow:0 0 14px #3BE3FF}
+.marquee{overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.mq{display:flex;align-items:center;gap:18px;padding:22px 18px;font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:.1em;color:#C3CCDA;white-space:nowrap}
+.mq i{display:inline-block;width:8px;height:8px;border:1.5px solid #3BE3FF;transform:rotate(45deg);box-shadow:0 0 8px rgba(59,227,255,.8)}
+.spin-border{isolation:isolate}
+.spin-border::before{content:"";position:absolute;inset:-2px;z-index:-2;background:conic-gradient(from var(--a),#3BE3FF,#8B5CF6,#B6F36A,#3BE3FF);animation:rot 4s linear infinite;filter:drop-shadow(0 0 18px rgba(59,227,255,.5))}
+.spin-border::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(165deg,#13203A,#1B1338)}
+.flip{perspective:1100px;min-height:230px}
+.flip-inner{position:relative;width:100%;height:100%;min-height:230px;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip-face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
+.flip-back{transform:rotateY(180deg);background:linear-gradient(150deg,rgba(59,227,255,.16),rgba(139,92,246,.18));border-color:rgba(59,227,255,.5);box-shadow:0 0 40px -8px rgba(59,227,255,.45)}
+@media (hover:hover){.flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}}
+@media (hover:none){.flip-inner{transform:none !important;display:flex;flex-direction:column;gap:8px}.flip-face{position:relative;backface-visibility:visible;-webkit-backface-visibility:visible}.flip-back{transform:none}.flip-hint{display:none}}
+.steps-track{position:relative;height:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.steps-track::after{content:"";position:absolute;top:0;width:30%;height:2px;background:linear-gradient(90deg,transparent,#3BE3FF,#B9A3FF,transparent);box-shadow:0 0 12px #3BE3FF;animation:beam 3s linear infinite}
+.step-dot{width:14px;height:14px;border-radius:50%;background:#3BE3FF;animation:ringpulse 2s ease-out infinite}
+.tunnel{position:absolute;inset:0;perspective:700px;transform-style:preserve-3d;pointer-events:none;overflow:hidden}
+.tunnel span{position:absolute;left:50%;top:50%;width:640px;height:640px;margin:-320px 0 0 -320px;border:1.5px solid rgba(59,227,255,.4);border-radius:50%;box-shadow:0 0 30px rgba(59,227,255,.25),inset 0 0 30px rgba(139,92,246,.25);animation:tunnel 7s linear infinite}
+.spot{position:absolute;inset:0;pointer-events:none;transition:background .15s linear}
+@supports (animation-timeline: view()){.reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
+@media (prefers-reduced-motion:reduce){.blob,.s1,.s2,.s3,.shimmer-text,.shine::after,.marquee-track,.orbit,.spin-border::before,.tunnel span,.steps-track::after,.step-dot,.cursor,.reveal{animation:none !important}}
+</style>
+<style>html{scroll-behavior:smooth}</style>
+</head>
+<body>
+<div style="font-family: 'IBM Plex Sans', 'Helvetica Neue', sans-serif; color: #FFFFFF; background: #05070D; overflow: hidden">
+
+<!-- NAV -->
+<header style="position: relative; z-index: 5; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(5,7,13,0.7); backdrop-filter: blur(12px)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 32px; height: 32px; border: 1.5px solid #3BE3FF; transform: rotate(45deg); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 16px rgba(59,227,255,0.6)"><span style="transform: rotate(-45deg); font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 14px; color: #3BE3FF">P</span></div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.02em">PVBLICLY</div>
+</div>
+<nav class="navlinks" style="display: flex; gap: 28px; font-size: 14px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em">
+<a href="#services" style="color: #C3CCDA; text-decoration: none">SERVICES</a>
+<a href="#plans" style="color: #C3CCDA; text-decoration: none">PLANS</a>
+<a href="#industries" style="color: #C3CCDA; text-decoration: none">INDUSTRIES</a>
+<a href="#faq" style="color: #C3CCDA; text-decoration: none">FAQ</a>
+</nav>
+<a class="shine" href="#book" style="background: #3BE3FF; color: #04121A; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 20px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; box-shadow: 0 0 24px rgba(59,227,255,0.55)">Book free audit</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="hero" style="position: relative; overflow: hidden; background: radial-gradient(ellipse at 70% 20%, rgba(139,92,246,0.28), transparent 55%), radial-gradient(ellipse at 15% 60%, rgba(59,227,255,0.16), transparent 50%), #05070D">
+<div style="position: absolute; inset: 0; pointer-events: none; transform: translate(var(--bx, 0px), var(--by, 0px)); transition: transform 0.4s ease-out"><div class="blob" style="width: 560px; height: 560px; left: -120px; top: -160px; background: rgba(59,227,255,0.35)"></div></div>
+<div class="blob" style="width: 620px; height: 620px; right: -160px; top: 40px; background: rgba(139,92,246,0.42); animation-delay: -6s"></div>
+<div class="blob" style="width: 420px; height: 420px; left: 40%; bottom: -120px; background: rgba(182,243,106,0.16); animation-delay: -11s"></div>
+<div class="stars-layer" style="transform: translate(var(--stx, 0px), var(--sty, 0px))"><div class="stars s1"></div><div class="stars s2"></div><div class="stars s3"></div></div>
+<div class="spot" style="background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), rgba(127,239,255,0.16), transparent 60%)"></div>
+<div class="floor"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 38%; height: 1px; background: linear-gradient(90deg, transparent, rgba(59,227,255,0.8), transparent); box-shadow: 0 0 30px rgba(59,227,255,0.8)"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 24px 150px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 26px">
+<div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; border: 1px solid rgba(59,227,255,0.4); background: rgba(59,227,255,0.08); padding: 8px 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #7FEFFF"><span style="width: 8px; height: 8px; background: #3BE3FF; box-shadow: 0 0 10px #3BE3FF"></span>REMOTE OPERATIONS TEAM · ONLINE<span class="cursor" aria-hidden="true"></span></div>
+<h1 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(36px, 4.8vw, 64px); line-height: 1.06; letter-spacing: -0.02em; background: linear-gradient(120deg, #FFFFFF 30%, #7FEFFF 65%, #B9A3FF); -webkit-background-clip: text; background-clip: text; color: transparent" class="shimmer-text">Your business runs on systems, not your phone.</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #C3CCDA; max-width: 540px">Admin, SOPs, reports, customer follow-up, and social media — handled by a QA-trained team, so you stop being the bottleneck in your own business.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a class="shine" href="#book" style="background: #3BE3FF; color: #04121A; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 26px; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center; box-shadow: 0 0 32px rgba(59,227,255,0.55), 0 12px 30px -10px rgba(59,227,255,0.55)">Book your free Operations Audit</a>
+<a href="#plans" style="background: rgba(255,255,255,0.04); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 16px 26px; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(8px)">See plans</a>
+</div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #AEB9C9">PLANS FROM $1,000/MO · FLAT RATE · NEVER A % OF REVENUE</div>
+</div>
+
+<!-- 3D report card -->
+<div style="position: relative; perspective: 1300px; display: flex; justify-content: center">
+<div class="hide-sm" style="position: absolute; top: -40px; right: -10px; z-index: 0; transform: translate(var(--cx, 0px), var(--cy, 0px)); transition: transform 0.3s ease-out">
+<div class="cube-wrap" style="position: relative; transform-style: preserve-3d"><div class="orbit-wrap" aria-hidden="true"><div class="orbit"></div><div class="orbit o2"></div></div><div class="cube" aria-hidden="true"><div class="face f1">SOP</div><div class="face f2">KPI</div><div class="face f3">QA</div><div class="face f4">CRM</div><div class="face f5"></div><div class="face f6"></div></div></div>
+</div>
+<div style="position: relative; z-index: 1; width: 100%; max-width: 480px; transform-style: preserve-3d; transform: rotateX(var(--rx, 8deg)) rotateY(var(--ry, -16deg)); transition: transform 0.25s ease-out; background: rgba(12,18,32,0.72); border: 1px solid rgba(59,227,255,0.35); backdrop-filter: blur(14px); box-shadow: 0 40px 80px -30px rgba(0,0,0,0.9), 0 0 60px -10px rgba(59,227,255,0.35); overflow: hidden">
+<div class="scanline"></div>
+<div style="padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; gap: 12px; transform: translateZ(20px)">
+<div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px">Weekly Ops Report</div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7FEFFF">WEEK OF [DATE]</div>
+</div>
+<div style="display: flex; flex-direction: column; transform-style: preserve-3d">
+<div style="padding: 15px 22px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">Inbox &amp; calendar cleared daily</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #3BE3FF; color: #7FEFFF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(59,227,255,0.4)">DONE</span></div>
+<div style="padding: 15px 22px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">New SOP: client onboarding</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #3BE3FF; color: #7FEFFF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(59,227,255,0.4)">DONE</span></div>
+<div style="padding: 15px 22px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">All new leads followed up</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #3BE3FF; color: #7FEFFF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(59,227,255,0.4)">DONE</span></div>
+<div style="padding: 15px 22px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">Reviews answered</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #3BE3FF; color: #7FEFFF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(59,227,255,0.4)">DONE</span></div>
+<div style="padding: 15px 22px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">Social posts scheduled</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #B9A3FF; color: #D4C7FF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(139,92,246,0.5)">IN PROGRESS</span></div>
+<div style="padding: 15px 22px; display: flex; justify-content: space-between; gap: 12px; align-items: center; transform-style: preserve-3d"><span style="font-size: 15px; color: #DDE4EE">QA audit: customer replies</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; border: 1px solid #B9A3FF; color: #D4C7FF; padding: 4px 8px; transform: translateZ(40px); box-shadow: 0 0 12px rgba(139,92,246,0.5)">IN PROGRESS</span></div>
+</div>
+<div style="padding: 16px 22px; background: linear-gradient(90deg, rgba(59,227,255,0.18), rgba(139,92,246,0.18)); color: #FFFFFF; font-size: 14px; transform: translateZ(10px)">You read this in two minutes. We did the rest.</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Services and tools"><div class="marquee-track"><span class="mq"><i></i>SOPs</span><span class="mq"><i></i>KPI DASHBOARDS</span><span class="mq"><i></i>QA AUDITS</span><span class="mq"><i></i>CRM</span><span class="mq"><i></i>LEAD FOLLOW-UP</span><span class="mq"><i></i>SOCIAL MEDIA</span><span class="mq"><i></i>AUTOMATION</span><span class="mq"><i></i>LANDING PAGES</span><span class="mq"><i></i>REPORTS</span><span class="mq"><i></i>GUESTY</span><span class="mq"><i></i>GOHIGHLEVEL</span><span class="mq"><i></i>REAL GEEKS</span><span class="mq"><i></i>CANVA</span><span class="mq"><i></i>KNOWLEDGE BASES</span><span class="mq"><i></i>SOPs</span><span class="mq"><i></i>KPI DASHBOARDS</span><span class="mq"><i></i>QA AUDITS</span><span class="mq"><i></i>CRM</span><span class="mq"><i></i>LEAD FOLLOW-UP</span><span class="mq"><i></i>SOCIAL MEDIA</span><span class="mq"><i></i>AUTOMATION</span><span class="mq"><i></i>LANDING PAGES</span><span class="mq"><i></i>REPORTS</span><span class="mq"><i></i>GUESTY</span><span class="mq"><i></i>GOHIGHLEVEL</span><span class="mq"><i></i>REAL GEEKS</span><span class="mq"><i></i>CANVA</span><span class="mq"><i></i>KNOWLEDGE BASES</span></div></div>
+
+<!-- PAIN -->
+<section style="position: relative">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #3BE3FF">// SOUND FAMILIAR?</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">You started a business for freedom. Now it runs on you.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px">
+<div class="tilt" style="padding: 28px; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1)"><div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #7FEFFF; text-shadow: 0 0 18px rgba(59,227,255,0.6)">11:47 PM</div><div style="font-size: 16px; line-height: 1.5; color: #C3CCDA">Still answering emails a teammate could have handled.</div></div>
+<div class="tilt" style="padding: 28px; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1)"><div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #7FEFFF; text-shadow: 0 0 18px rgba(59,227,255,0.6)">6:15 AM</div><div style="font-size: 16px; line-height: 1.5; color: #C3CCDA">A missed inquiry from last night is now your competitor's customer.</div></div>
+<div class="tilt" style="padding: 28px; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1)"><div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #7FEFFF; text-shadow: 0 0 18px rgba(59,227,255,0.6)">SATURDAY</div><div style="font-size: 16px; line-height: 1.5; color: #C3CCDA">Chasing invoices instead of spending time with your family.</div></div>
+<div class="tilt" style="padding: 28px; display: flex; flex-direction: column; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1)"><div style="font-family: 'JetBrains Mono', monospace; font-size: 24px; color: #7FEFFF; text-shadow: 0 0 18px rgba(59,227,255,0.6)">3 WEEKS</div><div style="font-size: 16px; line-height: 1.5; color: #C3CCDA">Since your last social media post. Every process lives in your head.</div></div>
+</div>
+<p style="margin: 0; font-size: 20px; line-height: 1.5; max-width: 760px; color: #FFFFFF"><strong>You don't need to work harder. You need systems — and someone to run them.</strong></p>
+</div>
+</section>
+
+<!-- DIFFERENCE -->
+<section style="position: relative; background: radial-gradient(ellipse at 20% 50%, rgba(139,92,246,0.2), transparent 55%), #070A14; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08)">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: center">
+<div class="stack hide-sm" aria-hidden="true">
+<div class="plate" style="top: 210px; animation-delay: 0s">01 DOCUMENTED</div>
+<div class="plate" style="top: 150px; animation-delay: 1s">02 MEASURED</div>
+<div class="plate" style="top: 90px; animation-delay: 2s">03 AUDITED</div>
+<div class="plate" style="top: 30px; animation-delay: 3s; border-color: rgba(185,163,255,0.9)">04 HANDS-OFF</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #B9A3FF">// WHAT MAKES US DIFFERENT</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">Most VAs do tasks. We run your operations.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C3CCDA">Pvblicly was founded by a former Operations Manager who has evaluated hundreds of sales and support conversations for US brands — finding exactly where customers drop off, and why. We bring that same discipline to your business.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">
+<div style="border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 18px; display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Documented</div><div style="font-size: 14px; line-height: 1.5; color: #AEB9C9">Your processes turned into SOPs anyone can follow.</div></div>
+<div style="border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 18px; display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Measured</div><div style="font-size: 14px; line-height: 1.5; color: #AEB9C9">Reports and KPI dashboards, no digging required.</div></div>
+<div style="border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 18px; display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Audited</div><div style="font-size: 14px; line-height: 1.5; color: #AEB9C9">QA checks catch problems before reviews do.</div></div>
+<div style="border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); padding: 18px; display: flex; flex-direction: column; gap: 6px"><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px">Hands-off for you</div><div style="font-size: 14px; line-height: 1.5; color: #AEB9C9">No hiring, training, or HR. You read the report.</div></div>
+</div>
+<div style="font-size: 15px; color: #AEB9C9">— Ian Vincent Rebuta, Founder</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #3BE3FF">// SERVICES</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">One team. Everything that keeps your business running.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px">
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_01</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Admin &amp; Executive Support</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Inbox and calendar, invoicing, contracts and agreements, client documents, weekly status reports, vendor research.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_02</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">CRM &amp; Lead Management</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Real Geeks and GoHighLevel, lead follow-up, 12-month nurture sequences, team performance tracking.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_03</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">SOPs &amp; Operations</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Process documentation, 30–90 day operational plans, customer service knowledge bases, training scripts.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_04</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Reports, Analytics &amp; Automation</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Excel dashboards, income and expense reports, KPI tracking, data cleanup, Google Apps Script automation.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_05</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Social Media Management</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Strategy, content calendars, Canva design, Meta Business Suite, brand setup for new businesses.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_06</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Marketing &amp; Campaigns</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Landing pages, event and QR code campaigns, lead magnets, presentation decks, AI voiceovers.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_07</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Short-Term Rental Operations</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Guesty setup, property documentation and house rules, guest data management, co-hosting reports.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_08</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Quality Assurance &amp; CX</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Call and chat audits, scorecards, calibration sessions, sales call analysis, compliance checks, team coaching.</div></div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 28px; display: flex; flex-direction: column; gap: 12px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF">MOD_09</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 20px">Project Coordination</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Managing outside specialists, event planning, and multi-part campaigns from start to finish.</div></div>
+</div>
+</div>
+</section>
+
+<!-- COMPARISON -->
+<section style="background: #070A14; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08)">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 92px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.01em; max-width: 760px">Cheaper than hiring. Stronger than one assistant.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; perspective: 1400px">
+<div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); padding: 32px; display: flex; flex-direction: column; gap: 18px; opacity: 0.85">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #AEB9C9">HIRING IN-HOUSE (US)</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 34px">$3,500+<span style="font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 500; color: #AEB9C9">/month</span></div>
+<ul class="ticks">
+<li>Before payroll taxes, benefits, and training</li>
+<li>One person, one skill set</li>
+<li>No backup when they're sick or on leave</li>
+<li>You recruit, manage, and review them</li>
+</ul>
+</div>
+<div style="background: linear-gradient(150deg, rgba(59,227,255,0.14), rgba(139,92,246,0.16)); border: 1px solid rgba(59,227,255,0.5); padding: 32px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 0 60px -10px rgba(59,227,255,0.35); transform: translateZ(30px)">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em; color: #7FEFFF">PVBLICLY OPERATIONS TEAM</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 34px">$2,500<span style="font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 500; color: #C3CCDA">/month</span></div>
+<ul class="ticks">
+<li>Flat rate — no taxes, benefits, or percentage of revenue</li>
+<li>VA, social media specialist, and QA oversight</li>
+<li>Backup coverage built in</li>
+<li>We manage the team. You read the report.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PLANS -->
+<section id="plans" style="position: relative; background: radial-gradient(ellipse at 50% 30%, rgba(59,227,255,0.12), transparent 60%), #05070D">
+<div class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 100px 24px 110px; display: flex; flex-direction: column; gap: 56px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #3BE3FF">// PLANS</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">Pick the level of support your business needs.</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #AEB9C9">Not sure which plan fits? The free audit will tell you.</p>
+</div>
+<div class="plans" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: stretch; transform-style: preserve-3d">
+
+<div class="plan-l" style="background: rgba(12,18,32,0.8); border: 1px solid rgba(255,255,255,0.14); padding: 32px; display: flex; flex-direction: column; gap: 22px; backdrop-filter: blur(10px)">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px">Essentials</div>
+<div style="font-size: 15px; color: #AEB9C9">Solo owners drowning in admin</div>
+</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 40px">$1,000<span style="font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 500; color: #AEB9C9">/mo</span></div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7FEFFF; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0">1 DEDICATED VA · UP TO 80 HRS</div>
+<ul class="ticks">
+<li>Inbox, calendar, invoicing &amp; documents</li>
+<li>Business-hours coverage</li>
+<li>2 SOPs per month</li>
+<li>Monthly business summary report</li>
+<li>Weekly status update</li>
+<li>8 social posts/month, 1 platform</li>
+<li>Initial Lead Leakage Audit™</li>
+</ul>
+<a href="#book" style="margin-top: auto; border: 1px solid rgba(255,255,255,0.35); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 20px; min-height: 48px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">Start with Essentials</a>
+</div>
+
+<div class="plan-m spin-border" style="position: relative; background: transparent; border: 1.5px solid transparent; padding: 32px; display: flex; flex-direction: column; gap: 22px; box-shadow: 0 0 80px -12px rgba(59,227,255,0.55), 0 40px 80px -30px rgba(0,0,0,0.9)">
+<div style="position: absolute; top: -14px; left: 32px; background: #3BE3FF; color: #04121A; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; padding: 6px 10px; box-shadow: 0 0 20px rgba(59,227,255,0.55)">MOST POPULAR</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px">Operations Team</div>
+<div style="font-size: 15px; color: #C3CCDA">Growing businesses ready to delegate operations</div>
+</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 40px; text-shadow: 0 0 30px rgba(59,227,255,0.55)">$2,500<span style="font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 500; color: #C3CCDA; text-shadow: none">/mo</span></div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7FEFFF; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); padding: 12px 0">VA + SOCIAL SPECIALIST + QA · UP TO 160 HRS</div>
+<ul class="ticks">
+<li>Everything in Essentials, plus:</li>
+<li>Extended hours + backup coverage</li>
+<li>4 SOPs per month</li>
+<li>CRM upkeep &amp; lead follow-up</li>
+<li>Customer service knowledge base</li>
+<li>Bi-weekly report + KPI dashboard</li>
+<li>12–16 posts + Reels, 2 platforms</li>
+<li>1 landing page per quarter</li>
+<li>1 automation workflow per quarter</li>
+<li>Monthly QA audit of customer communication</li>
+<li>1 industry module included</li>
+</ul>
+<a class="shine" href="#book" style="margin-top: auto; background: #3BE3FF; color: #04121A; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 20px; min-height: 48px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 28px rgba(59,227,255,0.55)">Get the Operations Team</a>
+</div>
+
+<div class="plan-r" style="background: rgba(12,18,32,0.8); border: 1px solid rgba(255,255,255,0.14); padding: 32px; display: flex; flex-direction: column; gap: 22px; backdrop-filter: blur(10px)">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 22px">Ops Partner</div>
+<div style="font-size: 15px; color: #AEB9C9">Multiple businesses, locations, or properties</div>
+</div>
+<div style="font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 40px">$3,500<span style="font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; font-weight: 500; color: #AEB9C9">+/mo</span></div>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7FEFFF; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 12px 0">FULL TEAM + ACCOUNT MANAGER · 200+ HRS</div>
+<ul class="ticks">
+<li>Everything in Operations Team, plus:</li>
+<li>7-day coverage with response-time targets</li>
+<li>Full operations manual</li>
+<li>Lead nurture sequence built &amp; managed</li>
+<li>Weekly report + monthly strategy call</li>
+<li>QA program: scorecards, audits, coaching</li>
+<li>30–90 day ops plan + quarterly review</li>
+<li>1 marketing campaign per quarter</li>
+<li>Special projects &amp; outside specialists</li>
+<li>Up to 2 industry modules</li>
+</ul>
+<a href="#book" style="margin-top: auto; border: 1px solid rgba(255,255,255,0.35); color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 16px; padding: 14px 20px; min-height: 48px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">Talk about Ops Partner</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- GUARANTEES -->
+<section style="border-top: 1px solid rgba(59,227,255,0.3); border-bottom: 1px solid rgba(59,227,255,0.3); background: linear-gradient(90deg, rgba(59,227,255,0.08), rgba(139,92,246,0.1))">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF; letter-spacing: 0.1em">GUARANTEE</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px">30-Day Systems Promise</div><div style="font-size: 15px; line-height: 1.5; color: #C3CCDA">If your first SOPs and ops report aren't delivered within 30 days, your second month is half off.</div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF; letter-spacing: 0.1em">LIMITED</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px">Founding Client Rate</div><div style="font-size: 15px; line-height: 1.5; color: #C3CCDA">Our first 3 clients lock in today's pricing for 12 months.</div></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #3BE3FF; letter-spacing: 0.1em">FLEXIBLE</div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px">No long contracts</div><div style="font-size: 15px; line-height: 1.5; color: #C3CCDA">A 60-day start to build your systems, then month-to-month.</div></div>
+</div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px">
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; color: #3BE3FF">// WHO WE HELP</div>
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -0.01em">Built around how your industry actually works.</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px">
+<div class="flip"><div class="flip-inner"><div class="flip-face" style="justify-content: space-between"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #3BE3FF">MODULE · STR</div><div style="display: flex; flex-direction: column; gap: 12px"><div style="width: 32px; height: 3px; background: #3BE3FF; box-shadow: 0 0 10px #3BE3FF"></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Short-term rentals</div><div class="flip-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #AEB9C9">HOVER TO SEE TASKS →</div></div></div><div class="flip-face flip-back" style="justify-content: space-between"><div style="font-size: 16px; line-height: 1.55; color: #E3E9F1">Guest messaging, cleaner and turnover coordination, review responses, listing updates.</div><a href="#book" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FEFFF; min-height: 44px; display: inline-flex; align-items: center">ADD THIS MODULE →</a></div></div></div>
+<div class="flip"><div class="flip-inner"><div class="flip-face" style="justify-content: space-between"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #3BE3FF">MODULE · RE</div><div style="display: flex; flex-direction: column; gap: 12px"><div style="width: 32px; height: 3px; background: #3BE3FF; box-shadow: 0 0 10px #3BE3FF"></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Real estate agents</div><div class="flip-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #AEB9C9">HOVER TO SEE TASKS →</div></div></div><div class="flip-face flip-back" style="justify-content: space-between"><div style="font-size: 16px; line-height: 1.55; color: #E3E9F1">CRM lead follow-up, nurture sequences, listing coordination, transaction checklists.</div><a href="#book" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FEFFF; min-height: 44px; display: inline-flex; align-items: center">ADD THIS MODULE →</a></div></div></div>
+<div class="flip"><div class="flip-inner"><div class="flip-face" style="justify-content: space-between"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #3BE3FF">MODULE · LSB</div><div style="display: flex; flex-direction: column; gap: 12px"><div style="width: 32px; height: 3px; background: #3BE3FF; box-shadow: 0 0 10px #3BE3FF"></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Local service businesses</div><div class="flip-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #AEB9C9">HOVER TO SEE TASKS →</div></div></div><div class="flip-face flip-back" style="justify-content: space-between"><div style="font-size: 16px; line-height: 1.55; color: #E3E9F1">Bookings, quote follow-ups, and Google review responses for contractors, salons, and clinics.</div><a href="#book" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FEFFF; min-height: 44px; display: inline-flex; align-items: center">ADD THIS MODULE →</a></div></div></div>
+<div class="flip"><div class="flip-inner"><div class="flip-face" style="justify-content: space-between"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #B9A3FF">MODULE · ECOM</div><div style="display: flex; flex-direction: column; gap: 12px"><div style="width: 32px; height: 3px; background: #B9A3FF; box-shadow: 0 0 10px #B9A3FF"></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">E-commerce sellers</div><div class="flip-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #AEB9C9">HOVER TO SEE TASKS →</div></div></div><div class="flip-face flip-back" style="justify-content: space-between"><div style="font-size: 16px; line-height: 1.55; color: #E3E9F1">Customer service inbox, order issues, product listing updates, support knowledge base.</div><a href="#book" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FEFFF; min-height: 44px; display: inline-flex; align-items: center">ADD THIS MODULE →</a></div></div></div>
+<div class="flip"><div class="flip-inner"><div class="flip-face" style="justify-content: space-between"><div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #B9A3FF">MODULE · COACH</div><div style="display: flex; flex-direction: column; gap: 12px"><div style="width: 32px; height: 3px; background: #B9A3FF; box-shadow: 0 0 10px #B9A3FF"></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Coaches &amp; consultants</div><div class="flip-hint" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #AEB9C9">HOVER TO SEE TASKS →</div></div></div><div class="flip-face flip-back" style="justify-content: space-between"><div style="font-size: 16px; line-height: 1.55; color: #E3E9F1">Client onboarding, scheduling, and repurposing your content across platforms.</div><a href="#book" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FEFFF; min-height: 44px; display: inline-flex; align-items: center">ADD THIS MODULE →</a></div></div></div>
+</div>
+</div>
+</section>
+
+<!-- PROOF -->
+<section style="background: #070A14; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08)">
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 92px 24px; display: flex; flex-direction: column; gap: 40px">
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.15">Recent work</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px">
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 24px; font-size: 16px; line-height: 1.5; color: #DDE4EE">Built a 12-month lead nurture system for a Tennessee real estate team.</div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 24px; font-size: 16px; line-height: 1.5; color: #DDE4EE">Set up property management software across 8 short-term rentals.</div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 24px; font-size: 16px; line-height: 1.5; color: #DDE4EE">Delivered social media strategy, reports, and a 30–90 day operational plan for a New Jersey RE/MAX agent.</div>
+<div class="tilt" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 24px; font-size: 16px; line-height: 1.5; color: #DDE4EE">Evaluated hundreds of sales and support calls for US e-commerce brands.</div>
+</div>
+<div style="border: 1px dashed rgba(59,227,255,0.5); padding: 28px; font-size: 17px; line-height: 1.55; color: #AEB9C9">[Client testimonial — add once approved] “…” — [Client name, business]</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+<div class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 48px">
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12">How it works</h2>
+<div class="steps-track" aria-hidden="true"></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px">
+<div style="border-left: 1px solid rgba(59,227,255,0.5); padding-left: 20px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #3BE3FF"><span style="display: inline-flex; align-items: center; gap: 10px"><span class="step-dot"></span>[ 01 ]</span></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Book a free audit</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">A short call about where your time goes and where customers slip through.</div></div>
+<div style="border-left: 1px solid rgba(59,227,255,0.5); padding-left: 20px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #3BE3FF"><span style="display: inline-flex; align-items: center; gap: 10px"><span class="step-dot"></span>[ 02 ]</span></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">Get your Lead Leakage report</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">We show you the gaps in your processes and which plan fits.</div></div>
+<div style="border-left: 1px solid rgba(139,92,246,0.7); padding-left: 20px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #B9A3FF"><span style="display: inline-flex; align-items: center; gap: 10px"><span class="step-dot"></span>[ 03 ]</span></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">60-day systems build</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">We document your processes, set up reports, and take over daily tasks.</div></div>
+<div style="border-left: 1px solid rgba(139,92,246,0.7); padding-left: 20px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #B9A3FF"><span style="display: inline-flex; align-items: center; gap: 10px"><span class="step-dot"></span>[ 04 ]</span></div><div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px">You read the report</div><div style="font-size: 15px; line-height: 1.55; color: #AEB9C9">Your business runs on systems. You get your evenings back.</div></div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="border-top: 1px solid rgba(255,255,255,0.08)">
+<div class="reveal" style="max-width: 900px; margin: 0 auto; padding: 100px 24px; display: flex; flex-direction: column; gap: 24px">
+<h2 style="margin: 0 0 12px; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12">Questions</h2>
+<div>
+<details><summary>What time zone does your team work in?</summary><p>Our team is based in the Philippines and schedules coverage around your business hours. Higher plans add extended and 7-day coverage.</p></details>
+<details><summary>Which tools do you work with?</summary><p>Real Geeks, GoHighLevel, Guesty, Canva, Meta Business Suite, Google Workspace, and Excel — and we learn your existing tools during onboarding.</p></details>
+<details><summary>What happens if I need more hours than my plan includes?</summary><p>We'll flag it early in your weekly report. You can upgrade your plan or add a one-time project from our add-ons.</p></details>
+<details><summary>Do I have to sign a long contract?</summary><p>No. There's a 60-day starting period to build your systems, then it's month-to-month.</p></details>
+<details><summary>Can I hire you for a one-time project?</summary><p>Yes. Add-ons include a paid Lead Leakage Audit™ (from $297), landing page builds (from $300), SOP packages (from $500), CRM nurture sequences (from $500), and QA program setup (from $750).</p></details>
+<details><summary>Which plan should I choose?</summary><p>Book the free audit. We'll look at your current workload and recommend the plan that fits — even if that's the smallest one.</p></details>
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="book" style="position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.35), transparent 60%), #05070D; border-top: 1px solid rgba(255,255,255,0.08)">
+<div class="tunnel" aria-hidden="true"><span></span><span style="animation-delay: -1.2s"></span><span style="animation-delay: -2.4s"></span><span style="animation-delay: -3.6s"></span><span style="animation-delay: -4.8s"></span><span style="animation-delay: -6s"></span></div>
+<div class="floor" style="height: 70%"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 120px 24px 160px; display: flex; flex-direction: column; gap: 26px; align-items: center; text-align: center">
+<h2 style="margin: 0; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.08; max-width: 900px; background: linear-gradient(120deg, #FFFFFF 30%, #7FEFFF 70%, #B9A3FF); -webkit-background-clip: text; background-clip: text; color: transparent" class="shimmer-text">Stop being the bottleneck in your own business.</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: #C3CCDA; max-width: 640px">Book a free Operations Audit. We'll show you where your business is losing time and customers, and exactly how to fix it.</p>
+<a class="shine" href="[CALENDLY LINK]" style="background: #3BE3FF; color: #04121A; text-decoration: none; font-weight: 700; font-size: 17px; padding: 18px 32px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center; box-shadow: 0 0 50px rgba(59,227,255,0.55)">Book your free Operations Audit</a>
+<div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #AEB9C9">NO PRESSURE · NO OBLIGATION · JUST A CLEAR PICTURE</div>
+</div>
+</section>
+
+<footer style="background: #03050A; color: #8F9BAD; border-top: 1px solid rgba(255,255,255,0.06)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px">
+<div><span style="font-family: 'Unbounded', sans-serif; font-weight: 700; color: #FFFFFF">PVBLICLY</span> · Remote operations team for busy owners</div>
+<div>[EMAIL] · © 2026 Pvblicly</div>
+</div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var hero=document.getElementById('hero');
+  if(!hero) return;
+  var raf=null, last=null;
+  function apply(){
+    raf=null; if(!last) return;
+    var x=last.x, y=last.y, st=hero.style;
+    st.setProperty('--ry',(-16+x*24).toFixed(2)+'deg');
+    st.setProperty('--rx',(8-y*16).toFixed(2)+'deg');
+    st.setProperty('--sx',((x+0.5)*100).toFixed(1)+'%');
+    st.setProperty('--sy',((y+0.5)*100).toFixed(1)+'%');
+    st.setProperty('--cx',(x*-40).toFixed(1)+'px');
+    st.setProperty('--cy',(y*-30).toFixed(1)+'px');
+    st.setProperty('--stx',(x*24).toFixed(1)+'px');
+    st.setProperty('--sty',(y*18).toFixed(1)+'px');
+    st.setProperty('--bx',(x*60).toFixed(1)+'px');
+    st.setProperty('--by',(y*50).toFixed(1)+'px');
+  }
+  hero.addEventListener('mousemove',function(e){
+    var r=hero.getBoundingClientRect();
+    last={x:(e.clientX-r.left)/r.width-0.5,y:(e.clientY-r.top)/r.height-0.5};
+    if(!raf) raf=requestAnimationFrame(apply);
+  });
+  hero.addEventListener('mouseleave',function(){ last={x:0,y:0}; if(!raf) raf=requestAnimationFrame(apply); });
+})();
+</script>
+</body>
+</html>
